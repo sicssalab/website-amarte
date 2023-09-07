@@ -10,5 +10,10 @@ export default {
       name: "ENG",
       value: "en",
     },
-  ]
+  ],
+  auth: {
+    loading: false,
+    complete: false,
+    error: false,
+  },
 };

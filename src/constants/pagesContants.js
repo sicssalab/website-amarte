@@ -25,6 +25,9 @@ const pagesContants = {
     afiliateEN: "afiliate",
     directoriosES: "directorio-profesionales",
     directoriosEN: "directorio-profesionales",
+    login: "login",
+    register: "register",
+    settings: "settings",
 }
 
 export default pagesContants;

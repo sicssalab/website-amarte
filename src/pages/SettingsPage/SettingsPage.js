@@ -1,13 +1,13 @@
 import React from "react";
 import { useGlobalState } from "../../store/StoreProvider";
-const HomePage = () => {
+const SettingsPage = () => {
   const {auth} = useGlobalState();
   console.log(auth);
   return (
     <>
-      <p>hasdasdasdsa </p>
+      <p>setiings </p>
     </>
   );
 };
 
-export default HomePage;
+export default SettingsPage;
