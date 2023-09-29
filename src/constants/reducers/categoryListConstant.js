@@ -1,0 +1,7 @@
+const categoryListConstant = {
+    CATEGORYLIST: "CATEGORYLIST",
+    CATEGORYLIST_FETCHING: "CATEGORYLIST_FETCHING",
+    CATEGORYLIST_ERROR: "CATEGORYLIST_ERROR",
+}
+
+export default categoryListConstant;

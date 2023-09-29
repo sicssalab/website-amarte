@@ -1,20 +1,25 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { DoubleAutocomplete, MystiqueCard } from "mystique-web-components";
-import { useGlobalState, useDispatch } from "../../store/StoreProvider";
+import Pagination from "react-bootstrap/Pagination";
+import {
+  DoubleAutocomplete,
+  MystiqueCard,
+  MystiqueCardBootstrap,
+} from "mystique-web-components";
+import { useGlobalState, useDispatch } from "../../../store/StoreProvider";
 import { useEffect } from "react";
-import destinationListAction from "../../actions/destinationListAction";
-import categoryListAction from "../../actions/categoryListAction";
+import destinationListAction from "../../../actions/destinationListAction";
+import categoryListAction from "../../../actions/categoryListAction";
 import { useMediaQuery } from "react-responsive";
-import breakpointConstants from "../../constants/breakpointConstants";
+import breakpointConstants from "../../../constants/breakpointConstants";
 import { useState } from "react";
-import pagesContants from "../../constants/pagesContants";
-const HomePage = () => {
+const CategoryLandingPage = () => {
   const { destinationList, categoryList } = useGlobalState();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: breakpointConstants.MD });
   const [categories, setCategories] = useState([]);
-
+  const { id: idSlug } = useParams();
   useEffect(() => {
     destinationListAction.get({}, dispatch);
     categoryListAction.get({}, dispatch);
@@ -40,11 +45,8 @@ const HomePage = () => {
               className="pt-4 pb-4 search-body-box"
               style={{ width: isMobile ? "initial" : "70%" }}
             >
-              <h1>Let's find your wedding team</h1>
-              <p>
-                Search over 250,000 local professionals with reviews, pricing,
-                availability, and more
-              </p>
+               <h1>{`Búsqueda en "${idSlug}"`}</h1>
+          <p>Encuentra los mejores "lorem ipsum" para tu evento.</p>
               {destinationList.complete && categoryList.complete && (
                 <DoubleAutocomplete
                   label="Search"
@@ -63,9 +65,9 @@ const HomePage = () => {
           </Container>
         </section>
       </Container>
-      <Container>
-        <div className="mt-4 pt-4">
-          <h2>Top Wedding Vendor Categories</h2>
+      <Container className="pt-4 mt-4">
+        <div>
+          <h2>{`La búsqueda de ${idSlug}`}</h2><small className="fw-bold">Tiene: 5345 Resultados</small>
           <div
             style={{
               display: "flex",
@@ -77,29 +79,54 @@ const HomePage = () => {
             }}
           >
             {categories.map((item, i) => {
-
-              //TODO CAMBIAR LA IMAGEN DE DEFAULT
-              const imageDefault ="https://media-api.xogrp.com/images/e913da1b-9675-4dd0-bbc8-bbc0bee1e907~sc_300.250"
-              const imagen = item.picture ? `${process.env.REACT_APP_API}${item.picture.formats.thumbnail.url}` : imageDefault
-
               return (
-                <MystiqueCard
+                <MystiqueCardBootstrap
                   key={i}
-                  href={`/${pagesContants.catergory}/${item.slug}`}
-                  srcImage={imagen}
+                  href={`/${item.slug}`}
+                  srcImage={
+                    "https://media-api.xogrp.com/images/e913da1b-9675-4dd0-bbc8-bbc0bee1e907~sc_300.250"
+                  }
                   alt={item.name}
                   name={item.name}
+                  description={
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                  }
+                  sendPriceText={"Solicitar Precios"}
                   //iconObject={"objeto"}
                 />
               );
             })}
           </div>
         </div>
+        <div className="">
+          <div style={{
+            display: "flex",
+            justifyContent: "center"
+          }}>
+            <Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item>{1}</Pagination.Item>
+              <Pagination.Ellipsis />
+
+              <Pagination.Item>{10}</Pagination.Item>
+              <Pagination.Item>{11}</Pagination.Item>
+              <Pagination.Item active>{12}</Pagination.Item>
+              <Pagination.Item>{13}</Pagination.Item>
+              <Pagination.Item disabled>{14}</Pagination.Item>
+
+              <Pagination.Ellipsis />
+              <Pagination.Item>{20}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination>
+          </div>
+        </div>
         <hr />
       </Container>
       <Container>
-        <div className="pb-4 mt-4 pt-4">
-          <h2>Your Wedding Vendors are the Key to a Beautiful Big Day</h2>
+        <div className="pb-4">
+          <h2>Wedding Photography</h2>
           <p>
             Choosing wedding vendors and wedding services for your ceremony and
             reception can be a daunting task. Finding the best vendors that fit
@@ -118,4 +145,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default CategoryLandingPage;

@@ -1,6 +1,7 @@
 const pagesContants = {
     homeES: "inicio",
     homeEN: "home",
+    catergory: "categoria",
     aboutUSES: "quienes-somos",
     aboutUSEN: "about-us",
     contactoES: "contactanos",

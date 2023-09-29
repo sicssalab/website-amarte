@@ -16,4 +16,16 @@ export default {
     complete: false,
     error: false,
   },
+  destinationList: {
+    data: [],
+    loading: false,
+    complete: false,
+    error: false,
+  },
+  categoryList: {
+    data: [],
+    loading: false,
+    complete: false,
+    error: false,
+  }
 };

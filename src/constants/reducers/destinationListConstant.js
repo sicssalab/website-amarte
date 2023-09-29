@@ -1,0 +1,7 @@
+const destinationListConstant = {
+    DESTINATIONLIST: "DESTINATIONLIST",
+    DESTINATIONLIST_FETCHING: "DESTINATIONLIST_FETCHING",
+    DESTINATIONLIST_ERROR: "DESTINATIONLIST_ERROR",
+}
+
+export default destinationListConstant;

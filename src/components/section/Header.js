@@ -126,7 +126,8 @@ const Header = () => {
           </Container>
         </Navbar>
       )}
-      <Navbar expand={expand} bg="primary" data-bs-theme="dark">
+      {/* <Navbar expand={expand} bg="primary" data-bs-theme="dark"> */}
+      <Navbar expand={expand} className="border-bottom">
         <Container>
           {isMobile && (
             <Navbar.Brand

@@ -1,7 +1,5 @@
 import React, { Fragment, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/section/Header";
-import Footer from "../components/section/Footer/Footer";
 import pagesContants from "../constants/pagesContants";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
