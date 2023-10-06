@@ -14,11 +14,15 @@ import categoryListAction from "../../../actions/categoryListAction";
 import { useMediaQuery } from "react-responsive";
 import breakpointConstants from "../../../constants/breakpointConstants";
 import { useState } from "react";
+import SectionMainSearchServices from "../../../components/section/SectionMainSearchServices";
+import SectionListEvent from "../../../components/section/SectionListEvent";
 const CategoryLandingPage = () => {
   const { destinationList, categoryList } = useGlobalState();
+  const [category, setCategory] = useState({ id: 0 });
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: breakpointConstants.MD });
   const [categories, setCategories] = useState([]);
+  const [someErrorPage, setSomeErrorPage] = useState(false);
   const { id: idSlug } = useParams();
   useEffect(() => {
     destinationListAction.get({}, dispatch);
@@ -33,95 +37,41 @@ const CategoryLandingPage = () => {
       const news = auxCat.splice(0, 12);
       setCategories(news);
     }
-  }, [categoryList]);
+
+    let category_id = 0;
+    try {
+      if (categoryList.complete) {
+        if (categoryList.complete) {
+          const index = categoryList.data.findIndex(
+            (i) => i.slug === idSlug
+          );
+          if (index >= 0) {
+            setCategory(categoryList.data[index])
+            category_id = categoryList.data[index].id
+          };
+        }
+      }
+    } catch (_) {}
+
+    if (category_id <= 0) {
+      setSomeErrorPage(true);
+    } else {
+      setSomeErrorPage(false);
+    }
+  }, [categoryList, idSlug]);
 
   return (
     <>
-      <Container fluid className="container-search border-bottom">
-        <section className="position-relative">
-          <img src={"https://hotelplazajuancarlos.com/imagenes/eventos/eventos%20sociales.jpg"} alt={"iamgen home"} />
-          <Container className="container-search-body">
-            <div
-              className="pt-4 pb-4 search-body-box"
-              style={{ width: isMobile ? "initial" : "70%" }}
-            >
-               <h1>{`Búsqueda en "${idSlug}"`}</h1>
-          <p>Encuentra los mejores "lorem ipsum" para tu evento.</p>
-              {destinationList.complete && categoryList.complete && (
-                <DoubleAutocomplete
-                  label="Search"
-                  startItems={destinationList.data}
-                  endItems={categoryList.data}
-                  placeholderStart="Destino"
-                  placeholderEnd="Categoría"
-                  textEmpySearchs="Selecciona un resultado de la lista de búsqueda"
-                  onSubmit={(item, itemEnd) => {
-                    console.info("start item", item);
-                  }}
-                />
-              )}
-            </div>
-
-          </Container>
-        </section>
-      </Container>
+    <SectionMainSearchServices
+            title={`Búsqueda en "${category.id === 0 ? "" : category.name}"`}
+            subTitle={`Encuentra los mejores "lorem ipsum" para tu evento.`}
+            destinationList={destinationList}
+            categoryList={categoryList}
+            endInputSearchString={category?.name}
+            itemEndInitial={category}
+        />
       <Container className="pt-4 mt-4">
-        <div>
-          <h2>{`La búsqueda de ${idSlug}`}</h2><small className="fw-bold">Tiene: 5345 Resultados</small>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "30px",
-              paddingTop: 15,
-              paddingBottom: 30,
-              justifyContent: isMobile ? "center" : "initial",
-            }}
-          >
-            {categories.map((item, i) => {
-              return (
-                <MystiqueCardBootstrap
-                  key={i}
-                  href={`/${item.slug}`}
-                  srcImage={
-                    "https://media-api.xogrp.com/images/e913da1b-9675-4dd0-bbc8-bbc0bee1e907~sc_300.250"
-                  }
-                  alt={item.name}
-                  name={item.name}
-                  description={
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                  }
-                  sendPriceText={"Solicitar Precios"}
-                  //iconObject={"objeto"}
-                />
-              );
-            })}
-          </div>
-        </div>
-        <div className="">
-          <div style={{
-            display: "flex",
-            justifyContent: "center"
-          }}>
-            <Pagination>
-              <Pagination.First />
-              <Pagination.Prev />
-              <Pagination.Item>{1}</Pagination.Item>
-              <Pagination.Ellipsis />
-
-              <Pagination.Item>{10}</Pagination.Item>
-              <Pagination.Item>{11}</Pagination.Item>
-              <Pagination.Item active>{12}</Pagination.Item>
-              <Pagination.Item>{13}</Pagination.Item>
-              <Pagination.Item disabled>{14}</Pagination.Item>
-
-              <Pagination.Ellipsis />
-              <Pagination.Item>{20}</Pagination.Item>
-              <Pagination.Next />
-              <Pagination.Last />
-            </Pagination>
-          </div>
-        </div>
+      <SectionListEvent title={`La búsqueda de ${category?.name}`} items={categories} />
         <hr />
       </Container>
       <Container>

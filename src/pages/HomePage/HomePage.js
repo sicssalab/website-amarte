@@ -9,12 +9,15 @@ import { useMediaQuery } from "react-responsive";
 import breakpointConstants from "../../constants/breakpointConstants";
 import { useState } from "react";
 import pagesContants from "../../constants/pagesContants";
+import { useNavigate } from "react-router-dom";
+import SectionMainSearchServices from "../../components/section/SectionMainSearchServices";
+
 const HomePage = () => {
   const { destinationList, categoryList } = useGlobalState();
   const dispatch = useDispatch();
   const isMobile = useMediaQuery({ maxWidth: breakpointConstants.MD });
   const [categories, setCategories] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     destinationListAction.get({}, dispatch);
     categoryListAction.get({}, dispatch);
@@ -32,37 +35,13 @@ const HomePage = () => {
 
   return (
     <>
-      <Container fluid className="container-search border-bottom">
-        <section className="position-relative">
-          <img src={"https://hotelplazajuancarlos.com/imagenes/eventos/eventos%20sociales.jpg"} alt={"iamgen home"} />
-          <Container className="container-search-body">
-            <div
-              className="pt-4 pb-4 search-body-box"
-              style={{ width: isMobile ? "initial" : "70%" }}
-            >
-              <h1>Let's find your wedding team</h1>
-              <p>
-                Search over 250,000 local professionals with reviews, pricing,
-                availability, and more
-              </p>
-              {destinationList.complete && categoryList.complete && (
-                <DoubleAutocomplete
-                  label="Search"
-                  startItems={destinationList.data}
-                  endItems={categoryList.data}
-                  placeholderStart="Destino"
-                  placeholderEnd="Categoría"
-                  textEmpySearchs="Selecciona un resultado de la lista de búsqueda"
-                  onSubmit={(item, itemEnd) => {
-                    console.info("start item", item);
-                  }}
-                />
-              )}
-            </div>
-
-          </Container>
-        </section>
-      </Container>
+    <SectionMainSearchServices
+            title={`Let's find your wedding team`}
+            subTitle={`Search over 250,000 local professionals with reviews, pricing,
+                availability, and more`}
+            destinationList={destinationList}
+            categoryList={categoryList}
+        />
       <Container>
         <div className="mt-4 pt-4">
           <h2>Top Wedding Vendor Categories</h2>
@@ -77,10 +56,12 @@ const HomePage = () => {
             }}
           >
             {categories.map((item, i) => {
-
               //TODO CAMBIAR LA IMAGEN DE DEFAULT
-              const imageDefault ="https://media-api.xogrp.com/images/e913da1b-9675-4dd0-bbc8-bbc0bee1e907~sc_300.250"
-              const imagen = item.picture ? `${process.env.REACT_APP_API}${item.picture.formats.thumbnail.url}` : imageDefault
+              const imageDefault =
+                "https://media-api.xogrp.com/images/e913da1b-9675-4dd0-bbc8-bbc0bee1e907~sc_300.250";
+              const imagen = item.picture
+                ? `${process.env.REACT_APP_API}${item.picture.formats.thumbnail.url}`
+                : imageDefault;
 
               return (
                 <MystiqueCard

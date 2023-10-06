@@ -15,9 +15,11 @@ import LoginPage from "./pages/LoginPage";
 import useAuthVerification from "./hooks/useAuthVerification";
 import { LayoutComponent } from "./pages/layouts";
 import AccountPage from "./pages/AccountPage";
+import SearchPage from "./pages/SearchPage";
 //import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import AuthLayout from "./pages/layouts/AuthLayout";
 import CategoryLandingPage from "./pages/category/CategoryLandingPage/CategoryLandingPage";
+import AboutUsPage from "./pages/AboutUsPage";
 
 function App() {
   useAuthVerification();
@@ -38,7 +40,7 @@ function App() {
       <Routes>
         {/* //TODO paginas en esp */}
         <Route path={"/"} element={<LayoutComponent component={HomePage} />} />
-        <Route path={`/${pagesContants.aboutUSES}`} element={<LayoutComponent component={HomePage} />} />
+        <Route path={`/${pagesContants.aboutUSES}`} element={<LayoutComponent component={AboutUsPage} />} />
         <Route path={`/${pagesContants.mesaDirectivaES}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.amarteMexicoES}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.afiliateES}`} element={<LayoutComponent component={HomePage} />} />
@@ -54,6 +56,7 @@ function App() {
         <Route path={`/${pagesContants.register}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.terminosCondicionesES}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.avisoPrivacidadES}`} element={<LayoutComponent component={HomePage} />} />
+        <Route path={`/${pagesContants.search}`} element={<LayoutComponent component={SearchPage} />} />
         <Route path={`/${pagesContants.settings}`}>
           {/* <Route index element={<><h1>I am parent</h1></>} /> */}
           <Route index element={<Navigate to={`/${pagesContants.settings}/account`} />} />

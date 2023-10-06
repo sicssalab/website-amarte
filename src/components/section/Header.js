@@ -64,7 +64,12 @@ const Header = () => {
   },[locale, location]);
 
   return (
-    <header>
+    <header style={{
+      position: isMobile? "initial": "sticky",
+      top: 0,
+      zIndex: 1000,
+      backgroundColor: "white"
+    }}>
       {!isMobile && (
         <Navbar className="bg-body-tertiary">
           <Container>
