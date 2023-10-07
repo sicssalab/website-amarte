@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useGlobalState } from "../../store/StoreProvider";
 import languageUtils from "../../utils/languageUtils";
 import { useIntl } from "react-intl";
-import Logo from "../../assets/logo.PNG";
+import Logo from "../../assets/logo.png";
 
 const SectionLoadingPage = (props) => {
     const { title, disableLink } = props;

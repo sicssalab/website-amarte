@@ -1,15 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import StoreProvider from './store/StoreProvider';
-import { BrowserRouter } from "react-router-dom";
-import { createRoot } from 'react-dom/client';
+import StoreProvider from "./store/StoreProvider";
 import { HelmetProvider } from 'react-helmet-async';
-
-const container = document.getElementById('root');
-const root = createRoot(container);
+import { BrowserRouter } from "react-router-dom";
 const helmetContext = {};
 
-root.render(
+ReactDOM.hydrate(
   <HelmetProvider context={helmetContext}>
     <StoreProvider>
       <BrowserRouter>
@@ -17,4 +14,5 @@ root.render(
       </BrowserRouter>
     </StoreProvider>
   </HelmetProvider>
+  ,document.getElementById('root')
 );

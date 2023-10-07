@@ -1,11 +1,10 @@
-//import logo from "../assets/logo.PNG"
+import logo from "../assets/logo.png";
 import pagesContants from "../constants/pagesContants";
 
 const es = {
   id: 1,
-  alt: "Miraro",
-  logo: require("../assets/logo.PNG"),
-  //logo: logo,
+  alt: "Amarte",
+  logo: logo,
   ContactInfo: [
     {
       id: 1,
@@ -142,8 +141,7 @@ const es = {
 const en = {
   id: 1,
   alt: "Miraro",
-  logo: require("../assets/logo.PNG"),
-  //logo: logo,
+  logo: logo,
   ContactInfo: [
     {
       id: 1,

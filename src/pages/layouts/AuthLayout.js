@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import { Header, Footer } from "../../components/section";
 import { useGlobalState } from "../../store/StoreProvider";

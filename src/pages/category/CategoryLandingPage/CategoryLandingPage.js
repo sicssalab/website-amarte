@@ -1,12 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Pagination from "react-bootstrap/Pagination";
-import {
-  DoubleAutocomplete,
-  MystiqueCard,
-  MystiqueCardBootstrap,
-} from "mystique-web-components";
 import { useGlobalState, useDispatch } from "../../../store/StoreProvider";
 import { useEffect } from "react";
 import destinationListAction from "../../../actions/destinationListAction";

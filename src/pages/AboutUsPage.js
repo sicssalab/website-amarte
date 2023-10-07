@@ -1,10 +1,14 @@
+import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import {WrapperHeaderBasic, WrapperRowScaleImage} from "mystique-web-components/dist/components";
+import imagenMain from "../assets/profile-cover.jpg";
+import imagenSection from "../assets/default.jpg";
+
 const AboutUsPage = () => {
   return (
     <>
       <WrapperHeaderBasic
-        srcImage={require("../assets/profile-cover.jpg")}
+        srcImage={imagenMain}
         alt="imagen header nosotros"
         title="Acerca de nosotros"
       />
@@ -116,7 +120,7 @@ const AboutUsPage = () => {
       <div className="section-white border-top border-bottom">
         <Container>
           <WrapperRowScaleImage
-            srcImage={require("../assets/default.jpg")}
+            srcImage={imagenSection}
             alt="imagen informativos nosotros"
             title="Wedding planning starts here"
             description="We help couples discover vendors and ideas and provide them with online tools to help them create their ideal wedding day."
@@ -124,7 +128,7 @@ const AboutUsPage = () => {
             descriptionOrder={2}
           />
           <WrapperRowScaleImage
-            srcImage={require("../assets/default.jpg")}
+            srcImage={imagenSection}
             alt="imagen informativos nosotros"
             title="Wedding planning starts here"
             description="We help couples discover vendors and ideas and provide them with online tools to help them create their ideal wedding day."
