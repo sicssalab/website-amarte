@@ -20,6 +20,9 @@ import SearchPage from "./pages/SearchPage";
 import AuthLayout from "./pages/layouts/AuthLayout";
 import CategoryLandingPage from "./pages/category/CategoryLandingPage/CategoryLandingPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import BoardDirectorPage from "./pages/BoardDirectorPage";
+import AmarteMexicoPage from "./pages/AmarteMexicoPage";
+import GalleryPage from "./pages/GalleryPage";
 
 function App() {
   useAuthVerification();
@@ -41,13 +44,13 @@ function App() {
         {/* //TODO paginas en esp */}
         <Route path={"/"} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.aboutUSES}`} element={<LayoutComponent component={AboutUsPage} />} />
-        <Route path={`/${pagesContants.mesaDirectivaES}`} element={<LayoutComponent component={HomePage} />} />
-        <Route path={`/${pagesContants.amarteMexicoES}`} element={<LayoutComponent component={HomePage} />} />
+        <Route path={`/${pagesContants.mesaDirectivaES}`} element={<LayoutComponent component={BoardDirectorPage} />} />
+        <Route path={`/${pagesContants.amarteMexicoES}`} element={<LayoutComponent component={AmarteMexicoPage} />} />
         <Route path={`/${pagesContants.afiliateES}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.directoriosES}`} element={<LayoutComponent component={HomePage} />} />
         {/* //TODO categoria/:keyname categoria:wedding-djs donde abre una landing */}
         <Route path={`/${pagesContants.educationES}`} element={<LayoutComponent component={HomePage} />} />
-        <Route path={`/${pagesContants.galeriaES}`} element={<LayoutComponent component={HomePage} />} />
+        <Route path={`/${pagesContants.galeriaES}`} element={<LayoutComponent component={GalleryPage} />} />
         {/* //TODO posiblemente lo rebotemos o no, copiamos el de miraro... */}
         <Route path={`/${pagesContants.blogES}`} element={<LayoutComponent component={HomePage} />} />
         <Route path={`/${pagesContants.bolsaTrabajoES}`} element={<LayoutComponent component={HomePage} />} />

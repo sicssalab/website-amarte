@@ -1,0 +1,30 @@
+.boxicons-small {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.box-icon-small {
+  background-color: $primary;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 20px;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        min-height: 20px;
+    }
+  }
+  &:hover {
+    background-color: $secondary;
+  }
+}

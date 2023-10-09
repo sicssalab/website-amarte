@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { DoubleAutocomplete, MystiqueCard } from "mystique-web-components";
+import { MystiqueCard } from "mystique-web-components";
 import { useGlobalState, useDispatch } from "../../store/StoreProvider";
 import { useEffect } from "react";
 import destinationListAction from "../../actions/destinationListAction";

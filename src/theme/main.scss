@@ -130,6 +130,27 @@ html {
   }
 }
 
+.text-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.mouse-hover {
+  cursor: pointer;
+}
+#modal_gallery {
+  .modal-content {
+    background-color: transparent;
+    border: 0;
+    .modal-header {
+      border-bottom: transparent;
+    }
+  }
+}
+//TODO components
+@import "./components/icons.scss";
+
 //TODO Last sections
 @import "./layout/footers.scss";
 @import "./layout/sections.scss";
+@import "./layout/gallery-container-list.scss";
